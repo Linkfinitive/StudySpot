@@ -31,4 +31,4 @@ Currently, the app needs to be updated every time the timetables change as it do
 12. In ./Backend/TimeManager.cs update the calculation for GetTeachingWeek. The Swinburne Timetable Site shows what date each teaching week starts, which can be used for the calculation.
 13. In ./wwwroot/main.js, update the constant numberOfCsvFiles at the top of the file to match the number of files holding the data.
 14. Make sure the file format hasn't changed since last year. If it has, additional changes to the code may be required.
-15. You may need to recompile the WASM binary, depending on whether or not I figured out how to automate it lol. Hopefully I'll remember to come and update this.
+15. Once the PR is merged CloudFlare will automatically recompile the C# code and the site will be updated.
