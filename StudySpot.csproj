@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.WebAssembly">
 
     <PropertyGroup>
         <!--Defaults-->
@@ -10,7 +10,7 @@
 
         <!--Target the WASM runtime and can be loaded from a file called main.js-->
         <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
-        <WasmMainJSPath>main.js</WasmMainJSPath>
+        <WasmMainJSPath>wwwroot/main.js</WasmMainJSPath>
 
         <!--Prevents the entire dotnet runtime being shipped to the client, instead only the used parts are shipped-->
         <PublishTrimmed>true</PublishTrimmed>
@@ -20,10 +20,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <!--Copies the web files to the output directory so they don't need to be in the project root-->
-        <Content Include="/wwwroot/**">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
+        <!--Include the WASM dotnet runtime so that the program can actually be executed by the browser-->
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="10.0.0" PrivateAssets="all"/>
     </ItemGroup>
 
 </Project>
