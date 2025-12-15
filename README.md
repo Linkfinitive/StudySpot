@@ -25,7 +25,7 @@ Currently, the app needs to be updated every time the timetables change as it do
 7. Once all the entries have been merged, click "Download CSV".
 8. Repeat the steps until all data is downloaded.
 9. Rename the files, in no particular order: 1, 2, 3, etc.
-10. Place the files in ./CsvFiles, and remove the old ones.
-11. In ./Backend/YearlyUpdateSettings.cs, update the constant containing the number of CSV files.
-12. In the same file, update the calculation for GetTeachingWeek. The Swinburne Timetable Site shows what date each teaching week starts, which can be used for the calculation.
+10. Place the files in ./wwwroot/CsvFiles, and remove the old ones.
+11. In ./Backend/TimeManager.cs update the calculation for GetTeachingWeek. The Swinburne Timetable Site shows what date each teaching week starts, which can be used for the calculation.
+12. In ./wwwroot/main.js, update the constant numberOfCsvFiles at the top of the file to match the number of files holding the data.
 13. You may need to recompile the WASM binary, depending on whether or not I figured out how to automate it lol. Hopefully I'll remember to come and update this.
