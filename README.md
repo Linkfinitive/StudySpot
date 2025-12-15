@@ -20,14 +20,15 @@ Currently, the app needs to be updated every time the timetables change as it do
 1. Go to the Swinburne Timetable Site for the current year and go to the "Location" tab.
 2. Select Hawthorn Campus, All Weeks, All Week (Mon-Sun), and All Day.
 3. Select up to 50 of the locations at a time (it will take around 10 queries to get all of the data).
-4. You must select "List Timetable" otherwise there will not be an option to download as CSV.
-5. Click "View Timetable".
-6. Click "Merge".
-7. Once all the entries have been merged, click "Download CSV".
-8. Repeat the steps until all data is downloaded.
-9. Rename the files, in no particular order: 1, 2, 3, etc.
-10. Place the files in ./wwwroot/CsvFiles, and remove the old ones.
-11. In ./Backend/TimeManager.cs update the calculation for GetTeachingWeek. The Swinburne Timetable Site shows what date each teaching week starts, which can be used for the calculation.
-12. In ./wwwroot/main.js, update the constant numberOfCsvFiles at the top of the file to match the number of files holding the data.
-13. Make sure the file format hasn't changed since last year. If it has, additional changes to the code may be required.
-14. You may need to recompile the WASM binary, depending on whether or not I figured out how to automate it lol. Hopefully I'll remember to come and update this.
+4. "OL" Locations can be excluded from the selection as they are not physical spaces.
+5. "List Timetable" must be selected otherwise there will not be an option to download as CSV.
+6. Click "View Timetable".
+7. Click "Merge".
+8. Once all the entries have been merged, click "Download CSV".
+9. Repeat the steps until all data is downloaded.
+10. Rename the files, in no particular order: 1, 2, 3, etc.
+11. Place the files in ./wwwroot/CsvFiles, and remove the old ones.
+12. In ./Backend/TimeManager.cs update the calculation for GetTeachingWeek. The Swinburne Timetable Site shows what date each teaching week starts, which can be used for the calculation.
+13. In ./wwwroot/main.js, update the constant numberOfCsvFiles at the top of the file to match the number of files holding the data.
+14. Make sure the file format hasn't changed since last year. If it has, additional changes to the code may be required.
+15. You may need to recompile the WASM binary, depending on whether or not I figured out how to automate it lol. Hopefully I'll remember to come and update this.
