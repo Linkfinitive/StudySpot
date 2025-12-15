@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <!--Defaults-->
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net10.0</TargetFramework>
+        <RootNamespace>StudySpot</RootNamespace>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+
+        <!--Target the WASM runtime and can be loaded from a file called main.js-->
+        <RuntimeIdentifier>browser-wasm</RuntimeIdentifier>
+        <WasmMainJSPath>main.js</WasmMainJSPath>
+
+        <!--Prevents the entire dotnet runtime being shipped to the client, instead only the used parts are shipped-->
+        <PublishTrimmed>true</PublishTrimmed>
+
+        <!--Needed to allow memory to be shared between dotnet and JS... yikes-->
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+
+</Project>
