@@ -9,9 +9,10 @@ Some of the rooms in the system may not be classrooms or may not be accessible t
 
 ### Improvements
 If you have an idea for an improvement, email [ideas@linkfinitive.com](mailto:ideas@linkfinitive.com) or submit a PR :) If you're looking for something to do, here's some features that would be awesome:
-- Automatically Scraping the CSV Files from the Swinburne Timetable Site, instead of having to manually add them every year.
+- Automatically scraping the CSV Files from the Swinburne Timetable Site, instead of having to manually add them every year.
 - More precise control over the filtering so users can select their favourite study locations.
 - Prioritise locations in the results if they are going to be free for longer periods (so users don't need to move every 2 hours when classes change).
+- Automatically account for any time zone differences between Swinburne and the user's current location. 
 - Currently large, strange event bookings which span multiple rooms are just discarded. Usually this is fine because people aren't trying to study in places where functions are on, but for completeness...
 
 ### Updating for Future Years
