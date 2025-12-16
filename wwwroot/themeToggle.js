@@ -1,12 +1,12 @@
+const htmlElement = document.documentElement;
+const toggleButton = document.getElementById('themeToggle');
+
 // Function to set the theme
 function setTheme(theme) {
     htmlElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme); // Save preference
     toggleButton.setAttribute('src', theme === 'light' ? 'images/LightThemeButton.png' : 'images/DarkThemeButton.png');
 }
-
-const htmlElement = document.documentElement;
-const toggleButton = document.getElementById('themeToggle');
 
 // Load saved theme preference
 const savedTheme = localStorage.getItem('theme');
