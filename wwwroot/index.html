@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <title>StudySpot</title>
 
     <style>
+        :root {
+            --bg-color: #FFFFFF;
+            --text-color: #000000;
+            --border-color: slategray;
+        }
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #EEEEEE;
+            --border-color: #888888;
+        }
         body {
             font-family: sans-serif;
             font-size: large;
@@ -12,28 +22,42 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+
+            /* colours */
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            
         }
 
         #locationsContainer {
             display: flex;
             flex-wrap: wrap;
+
+
         }
 
         .location {
-            border: solid slategray;
+            border: solid var(--border-color);
             border-radius: 10px;
             padding: 0 10px 0 10px;
             margin: 10px;
+        }
+
+        #themeToggle {
+            position: absolute;
+            top: 10px;
+            left: 10px;
         }
     </style>
 
 </head>
 <body>
-
+<input type="image" id="themeToggle" src="images/LightThemeButton.png" width="20" height="20">
 <h1>StudySpot</h1>
 <p>The following rooms are unscheduled <strong>now</strong>.</p>
 <div id="locationsContainer"></div>
 
 <script src="main.js" type="module"></script>
+<script src="themeToggle.js" type="module"></script>
 </body>
 </html>
