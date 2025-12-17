@@ -18,7 +18,7 @@ public class Location(string name)
             if (
                 entry.Day == day &&
                 entry.TeachingWeeks.Contains(teachingWeek) &&
-                entry.StartTime < time &&
+                entry.StartTime <= time &&
                 entry.EndTime > time)
             {
                 return false;
