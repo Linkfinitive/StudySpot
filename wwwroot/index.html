@@ -6,15 +6,21 @@
     <title>StudySpot</title>
     <style>
         :root {
-            --bg-color: #FFFFFF;
-            --text-color: #000000;
-            --border-color: slategray;
+            --bg-primary: #FAFAFA;
+            --bg-secondary: #F4F4F5;
+            --fg-primary: #18181B;
+            --fg-secondary: #52525B;
+            --accent-primary: #0D9EA3;
+            --border: #E4E4E7;
         }
 
         [data-theme="dark"] {
-            --bg-color: #1a1a1a;
-            --text-color: #EEEEEE;
-            --border-color: #888888;
+            --bg-primary: #18181B;
+            --bg-secondary: #27272A;
+            --fg-primary: #FAFAFA;
+            --fg-secondary: #A1A1AA;
+            --accent-primary: #0D9EA3;
+            --border: #3F3F46;
         }
 
         body {
@@ -26,8 +32,8 @@
             align-items: center;
 
             /* colours */
-            color: var(--text-color);
-            background-color: var(--bg-color);
+            color: var(--fg-primary);
+            background-color: var(--bg-primary);
         }
 
         #locationsContainer {
@@ -37,7 +43,7 @@
         }
 
         .location {
-            border: solid var(--border-color);
+            border: solid var(--border);
             border-radius: 10px;
             padding: 0 10px 0 10px;
             margin: 10px;
