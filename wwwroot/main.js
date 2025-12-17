@@ -84,6 +84,13 @@ function setDateTimeDefaults() {
 
 //Program
 await loadCSV();
-let freeLocations = getFreeLocations(new Date());
-console.log(freeLocations);
-displayLocations(freeLocations);
+
+//Set the date and time pickers to the current time.
+setDateTimeDefaults();
+
+//Attach event listeners to date and time pickers.
+document.getElementById("datePicker").addEventListener("change", handleDateChange);
+document.getElementById("timePicker").addEventListener("change", handleDateChange);
+
+//Force a calculation of the currently free rooms.
+handleDateChange();
