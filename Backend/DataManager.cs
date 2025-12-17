@@ -32,6 +32,15 @@ public static partial class DataManager
     {
         DateTime dateTime = DateTime.Parse(dateTimeString);
 
+        //If it's exactly on the hour or exactly half past (accurate to one mintute), then the data
+        //is going to have some quirks as that's exactly when events begin and end at Swinburne. To get
+        //around this, we just add one minute if the minutes is exactly 0 or 30, which should make the results
+        //accutrate for the next block of classes. Yay :)
+        if (dateTime.Minute is 0 or 30)
+        {
+            dateTime += TimeSpan.FromMinutes(1);
+        }
+
         Location[] unfilteredLocations = Location.SortEntriesByLocation(entries.ToArray());
         Location[] locations = Location.RemoveNonClassroomLocations(unfilteredLocations);
 
