@@ -83,6 +83,7 @@ function setDateTimeDefaults() {
 
 
 //Program
+//Load in CSV files to C#.
 await loadCSV();
 
 //Set the date and time pickers to the current time.
