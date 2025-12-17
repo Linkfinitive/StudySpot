@@ -3,62 +3,29 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StudySpot</title>
-    <style>
-        :root {
-            --bg-color: #FFFFFF;
-            --text-color: #000000;
-            --border-color: slategray;
-        }
-
-        [data-theme="dark"] {
-            --bg-color: #1a1a1a;
-            --text-color: #EEEEEE;
-            --border-color: #888888;
-        }
-
-        body {
-            font-family: sans-serif;
-            font-size: large;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            /* colours */
-            color: var(--text-color);
-            background-color: var(--bg-color);
-        }
-
-        #locationsContainer {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .location {
-            border: solid var(--border-color);
-            border-radius: 10px;
-            padding: 0 10px 0 10px;
-            margin: 10px;
-        }
-
-        #themeToggle {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-        }
-    </style>
+<link href="./styles.css" rel="stylesheet" />
     <script src="themeToggle.js"></script>
 
 </head>
 
 <body>
-<input type="image" id="themeToggle" onclick="toggleTheme()" src="images/LightThemeButton.png" width="20" height="20">
-<h1>StudySpot</h1>
-<p>The following rooms are unscheduled on <input type="date" id="datePicker"/> at <input type="time" id="timePicker" /></p>
-<div id="locationsContainer"></div>
 
-    <script src="main.js" type="module"></script>
+
+<div id="title-bar">
+    <input height="20" id="themeToggle" onclick="toggleTheme()" src="images/LightThemeButton.png" type="image" width="20" alt="Toggle Theme">
+    <h1>StudySpot</h1>
+    <p>Search for rooms with no classes scheduled</p>
+    <label for="dateTimePicker"></label>
+    <input id="dateTimePicker" type="datetime-local"/>
+</div>
+
+<div id="content">
+    <div id="locationsContainer"></div>
+</div>
+
+<script src="main.js" type="module"></script>
 </body>
 
 </html>

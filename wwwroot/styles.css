@@ -1,0 +1,99 @@
+:root {
+    /*Light theme colours*/
+    --bg-primary: #FAFAFA;
+    --bg-secondary: #eaeaea;
+    --fg-primary: #18181B;
+    --fg-secondary: #52525B;
+    --accent: #d90061;
+    --border: #d7d7d9;
+}
+
+[data-theme="dark"] {
+    /*Dark theme colours*/
+    --bg-primary: #18181B;
+    --bg-secondary: #27272A;
+    --fg-primary: #FAFAFA;
+    --fg-secondary: #A1A1AA;
+    --accent: #0D9EA3;
+    --border: #3F3F46;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: var(--fg-primary);
+    background-color: var(--bg-primary);
+}
+
+#title-bar {
+    /*Make this element stick to the top and fill the entire width of the viewport.*/
+    width: 100%;
+    position: sticky;
+    top: 0;
+
+    /*Make the subelements align center and flex column (vertically stacked).*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: var(--bg-secondary);
+    border-radius: 15px;
+}
+
+#title-bar p {
+    color: var(--fg-secondary);
+}
+
+#title-bar input[type="datetime-local"] {
+    /*Remove ugly default styles*/
+    appearance: none;
+    -webkit-appearance: none;
+
+    /*Set colours*/
+    background-color: var(--bg-secondary);
+    color: var(--fg-secondary);
+
+    /*Make it look like it's not from the 90's*/
+    border: 2px solid var(--border);
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 20px;
+
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+
+    /*AI says we need this to make it look correct on Safari on iOS*/
+    line-height: normal;
+}
+
+#content {
+    /*This is a container around everything except the title bar*/
+    padding: 10px;
+    margin: 10px;
+}
+
+#locationsContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.location {
+    border: solid var(--border);
+    border-radius: 10px;
+    padding: 0 10px 0 10px;
+    margin: 10px;
+}
+
+#themeToggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+}
