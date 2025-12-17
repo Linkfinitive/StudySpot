@@ -1,4 +1,5 @@
 :root {
+    /*Light theme colours*/
     --bg-primary: #FAFAFA;
     --bg-secondary: #eaeaea;
     --fg-primary: #18181B;
@@ -8,6 +9,7 @@
 }
 
 [data-theme="dark"] {
+    /*Dark theme colours*/
     --bg-primary: #18181B;
     --bg-secondary: #27272A;
     --fg-primary: #FAFAFA;
@@ -52,9 +54,11 @@ body {
     appearance: none;
     -webkit-appearance: none;
 
+    /*Set colours*/
     background-color: var(--bg-secondary);
     color: var(--fg-secondary);
 
+    /*Make it look like it's not from the 90's*/
     border: 2px solid var(--border);
     border-radius: 15px;
     padding: 10px;
@@ -69,6 +73,7 @@ body {
 }
 
 #content {
+    /*This is a container around everything except the title bar*/
     padding: 10px;
     margin: 10px;
 }
@@ -90,5 +95,5 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
-    padding: 20px;
+    padding: 10px;
 }
