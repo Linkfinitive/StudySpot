@@ -35,6 +35,11 @@ function getFreeLocations(dateTime) {
 
 function displayLocations(locations) {
     const locationsContainer = document.getElementById("locationsContainer");
+
+    //Clear any existing content
+    locationsContainer.innerHTML = "";
+
+    //Display the locations in the array
     for (const location of locations) {
         const locationDiv = document.createElement("div");
         locationDiv.className = "location";
