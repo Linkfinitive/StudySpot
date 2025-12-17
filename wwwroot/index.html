@@ -26,14 +26,58 @@
         body {
             font-family: sans-serif;
             font-size: large;
-            padding: 20px;
+
             display: flex;
             flex-direction: column;
             align-items: center;
 
-            /* colours */
             color: var(--fg-primary);
             background-color: var(--bg-primary);
+        }
+
+        #title-bar {
+            /*Make this element stick to the top and fill the entire width of the viewport.*/
+            width: 100%;
+            position: sticky;
+            top: 0;
+
+            /*Make the subelements align center and flex column (vertically stacked).*/
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            background-color: var(--bg-secondary);
+            border-radius: 15px;
+        }
+
+        #title-bar p {
+            color: var(--fg-secondary);
+        }
+
+        #title-bar input[type="datetime-local"] {
+            /*Remove ugly default styles*/
+            appearance: none;
+            -webkit-appearance: none;
+
+            background-color: var(--bg-secondary);
+            color: var(--accent);
+
+            border: 2px solid var(--border);
+            border-radius: 15px;
+            padding: 10px;
+            margin-bottom: 20px;
+
+            font-family: inherit;
+            font-size: 1rem;
+            cursor: pointer;
+
+            /*AI says we need this to make it look correct on Safari on iOS*/
+            line-height: normal;
+        }
+
+        #content {
+            padding: 10px;
+            margin: 10px;
         }
 
         #locationsContainer {
@@ -61,12 +105,20 @@
 </head>
 
 <body>
-<input type="image" id="themeToggle" onclick="toggleTheme()" src="images/LightThemeButton.png" width="20" height="20">
-<h1>StudySpot</h1>
-<p>The following rooms are unscheduled on <input type="date" id="datePicker"/> at <input type="time" id="timePicker" /></p>
-<div id="locationsContainer"></div>
 
-    <script src="main.js" type="module"></script>
+
+<div id="title-bar">
+    <input height="20" id="themeToggle" onclick="toggleTheme()" src="images/LightThemeButton.png" type="image" width="20">
+    <h1>StudySpot</h1>
+    <p>Search for rooms with no classes scheduled on </p>
+    <input id="dateTimePicker" type="datetime-local"/>
+</div>
+
+<div id="content">
+    <div id="locationsContainer"></div>
+</div>
+
+<script src="main.js" type="module"></script>
 </body>
 
 </html>
