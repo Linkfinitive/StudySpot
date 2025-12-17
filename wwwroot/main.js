@@ -50,6 +50,38 @@ function displayLocations(locations) {
     }
 }
 
+function handleDateChange() {
+    const dateInput = document.getElementById("datePicker").value;
+    const timeInput = document.getElementById("timePicker").value;
+
+    //Make sure both the date and time inputs have a value
+    if (dateInput && timeInput) {
+        // Construct a Date object from the inputs
+        const combinedDate = new Date(`${dateInput}T${timeInput}`);
+
+        //Display the new results
+        displayLocations(getFreeLocations(combinedDate));
+    }
+}
+
+function setDateTimeDefaults() {
+    //Get the current date.
+    const now = new Date();
+
+    //The date picker must be assigned a string in the format YYYY-MM-DD. A quick hack for making this happen is
+    //to ask for the date in the canadian format, which will return YYYY-MM-DD. We can't use .toISOString.Split("T")[0]
+    //as you might expect, because that will return the UTC date which could be a day off if it's the morning here.
+    document.getElementById("datePicker").value = now.toLocaleDateString('en-CA');
+
+    //The time picker must be assigned a string in the 24h format HH:mm, with leading zeroes. Using the GB locale is
+    //the equivalent hack to the above to get the time in the right format.
+    document.getElementById("timePicker").value = now.toLocaleTimeString('en-GB', {
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+}
+
+
 //Program
 await loadCSV();
 let freeLocations = getFreeLocations(new Date());
