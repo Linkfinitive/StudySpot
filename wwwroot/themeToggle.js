@@ -1,8 +1,11 @@
 const htmlElement = document.documentElement;
-// Load saved theme preference
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) { setTheme(savedTheme); }
-else { setTheme('light'); } // Default theme
+
+// function to load theme if saved in localStorage
+function loadSavedTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) { setTheme(savedTheme); }
+    else { setTheme('light'); } // Default theme
+}
 
 // function to toggle theme
 function toggleTheme() {
