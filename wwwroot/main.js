@@ -26,6 +26,10 @@ async function loadCSV() {
 }
 
 function getFreeLocations(dateTime) {
+    //There is some weirdness with JS and C#'s date formats. Date.toISOString() in JS always converts to
+    //the UTC time. However, the time given back by C# is correct, which leads me to believe that C# is aware
+    //of the user's local timezone somehow, likely from the browser. If you ever work with this date conversion,
+    //make sure you check that the searched time output in the console by C# is correct. Weirdness is abound.
     return exports.StudySpot.Backend.DataManager.GetFreeLocations(dateTime.toISOString());
 }
 
