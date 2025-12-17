@@ -61,6 +61,8 @@ function handleDateChange() {
 
         //Display the new results
         displayLocations(getFreeLocations(combinedDate));
+    } else {
+        console.warn("Date or time input is missing. Date:", dateInput, "Time:", timeInput);
     }
 }
 
