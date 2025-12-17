@@ -488,3 +488,8 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# .NET SDK installation and build output
+dotnet/
+dotnet-install.sh
+output/
