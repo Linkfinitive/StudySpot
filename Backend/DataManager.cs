@@ -58,4 +58,4 @@ public static partial class DataManager
 }
 
 //This data transfer object type must be defined, as anonymous types can not be preserved by the dotnet WASM trimmer.
-internal record LocationDto(string Name, string NextScheduledTimeString);
+public record LocationDto(string Name, string NextScheduledTimeString);
