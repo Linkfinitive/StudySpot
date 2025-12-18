@@ -45,12 +45,8 @@ public static partial class DataManager
             if (l.IsFreeAt(time, dayOfWeek, teachingWeek))
             {
                 locationsCurrentlyFree.Add(l);
-                Console.WriteLine($"{l.Name} is free at this time.");
             }
         }
-
-        Console.WriteLine($"{locationsCurrentlyFree.Count} free locations found of {locations.Length} searched.");
-        Console.WriteLine($"Time searched: {dateTime}");
 
         return Location.LocationListToStringOfLocationNames(locationsCurrentlyFree);
     }
