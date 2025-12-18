@@ -5,26 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StudySpot</title>
-<link href="./styles.css" rel="stylesheet" />
+    <link href="./styles.css" rel="stylesheet" />
+    <!-- load theme toggle script here so it's available when the page loads -->
     <script src="themeToggle.js"></script>
-
 </head>
 
 <body>
+    <div id="title-bar">
+        <!-- Theme toggle button -->
+        <input height="20" id="themeToggle" onclick="toggleTheme()" src="images/LightThemeButton.png" type="image"
+            width="20" alt="Toggle Theme">
+        <script>loadSavedTheme();</script> <!-- Load saved theme on page load -->
 
+        <h1>StudySpot</h1>
+        <p>Search for rooms with no classes scheduled</p>
+        <label for="dateTimePicker"></label>
+        <input id="dateTimePicker" type="datetime-local" />
+    </div>
+    <div id="content">
+    </div>
 
-<div id="title-bar">
-    <input height="20" id="themeToggle" onclick="toggleTheme()" src="images/LightThemeButton.png" type="image" width="20" alt="Toggle Theme">
-    <h1>StudySpot</h1>
-    <p>Search for rooms with no classes scheduled</p>
-    <label for="dateTimePicker"></label>
-    <input id="dateTimePicker" type="datetime-local"/>
-</div>
-
-<div id="content">
-</div>
-
-<script src="main.js" type="module"></script>
+    <script src="main.js" type="module"></script>
 </body>
 
 </html>
