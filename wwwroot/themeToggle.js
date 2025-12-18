@@ -1,25 +1,33 @@
 const htmlElement = document.documentElement;
 
-// function to load theme if saved in localStorage
-function loadSavedTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) { setTheme(savedTheme); }
-    else { setTheme('light'); } // Default theme
+// Apply theme to HTML element (can be called before body loads)
+function applyTheme(theme) {
+    htmlElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
 }
 
-// function to toggle theme
+// Update button image (must be called after button exists)
+function updateButtonImage(theme) {
+    const toggleButton = document.getElementById('themeToggle');
+    if (toggleButton) {
+        toggleButton.setAttribute('src', theme === 'light' ? 'images/LightThemeButton.png' : 'images/DarkThemeButton.png');
+    }
+}
+
+// Get saved theme or return default
+function getSavedTheme() {
+    return localStorage.getItem('theme') || 'light';
+}
+
+// Function to toggle theme
 function toggleTheme() {
     const currentTheme = htmlElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
 }
 
-// Function to set the theme
+// Function to set the theme (applies theme and updates button)
 function setTheme(theme) {
-    htmlElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme); // Save preference
-    // set button image based on theme
-    toggleButton = document.getElementById('themeToggle');
-    if (!toggleButton) { throw new Error('No element with ID "themeToggle" found'); }
-    else { toggleButton.setAttribute('src', theme === 'light' ? 'images/LightThemeButton.png' : 'images/DarkThemeButton.png'); }
+    applyTheme(theme);
+    updateButtonImage(theme);
 }
