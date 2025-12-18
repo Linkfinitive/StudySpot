@@ -53,14 +53,15 @@ function displayLocations(locations) {
     //Display the locations
     for (const location of parsedLocations) {
 
-        //These variables need to be scoped to this for loop, not the if statement.
-        let locationSection;
+        //This variable needs to be scoped to this for loop, not the if statement.
         let locationContainer;
 
         if (location.NextScheduledTimeString === earliestTimeSoFar) {
             //In this case there is already a section for this time, so we can find it in the html.
             locationContainer = document.getElementById(`location-container-${location.NextScheduledTimeString}`);
         } else {
+            let locationSection
+
             //In this case we need to create the section, and give it a class name for styling.
             locationSection = document.createElement("div");
             locationSection.className = "location-section";
