@@ -45,7 +45,7 @@ public class Location(string name)
         foreach (Entry entry in entriesToday.Where(entry => entry.StartTime > time)) return entry.StartTime;
 
         //If there are no entries for the day, or all have already passed, then return the last point in the day.
-        return TimeOnly.MaxValue;
+        return new TimeOnly(23, 59);
     }
 
     internal static Location[] SortEntriesByLocation(Entry[] entries)
