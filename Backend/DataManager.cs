@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices.JavaScript;
+using System.Text.Json;
 
 namespace StudySpot.Backend;
 
@@ -28,7 +29,7 @@ public static partial class DataManager
     }
 
     [JSExport]
-    static string[] GetFreeLocations(string dateTimeString)
+    static string GetFreeLocations(string dateTimeString)
     {
         DateTime dateTime = DateTime.Parse(dateTimeString);
 
@@ -39,15 +40,22 @@ public static partial class DataManager
         DayOfWeek dayOfWeek = dateTime.DayOfWeek;
         TimeOnly time = TimeOnly.FromDateTime(dateTime);
 
-        List<Location> locationsCurrentlyFree = new();
+        //This list will be returned to JavaScript as an object containing all of the location information.
+        List<LocationDto> locationsCurrentlyFree = new();
+
         foreach (Location l in locations)
         {
             if (l.IsFreeAt(time, dayOfWeek, teachingWeek))
             {
-                locationsCurrentlyFree.Add(l);
+                string nextScheduledTimeString = l.GetNextScheduledTime(time, dayOfWeek, teachingWeek).ToString();
+                LocationDto dto = new(l.Name, nextScheduledTimeString);
+                locationsCurrentlyFree.Add(dto);
             }
         }
 
-        return Location.LocationListToStringOfLocationNames(locationsCurrentlyFree);
+        return JsonSerializer.Serialize(locationsCurrentlyFree, AppJsonContext.Default.ListLocationDto);
     }
 }
+
+//This data transfer object type must be defined, as anonymous types can not be preserved by the dotnet WASM trimmer.
+internal record LocationDto(string Name, string NextScheduledTimeString);
