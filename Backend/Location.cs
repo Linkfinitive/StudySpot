@@ -1,5 +1,3 @@
-using System.Text.Json;
-
 namespace StudySpot.Backend;
 
 public class Location(string name)
