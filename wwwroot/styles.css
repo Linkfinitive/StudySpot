@@ -80,7 +80,7 @@ body {
 
 .location-section {
     text-align: center;
-    /*color: var(--fg-primary);*/
+    color: var(--fg-primary);
     margin-bottom: 40px;
 }
 
