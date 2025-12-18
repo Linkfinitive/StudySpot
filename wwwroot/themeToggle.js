@@ -23,3 +23,6 @@ function setTheme(theme) {
     if (!toggleButton) { throw new Error('No element with ID "themeToggle" found'); }
     else { toggleButton.setAttribute('src', theme === 'light' ? 'images/LightThemeButton.png' : 'images/DarkThemeButton.png'); }
 }
+
+// Load saved theme when DOM is ready
+document.addEventListener('DOMContentLoaded', loadSavedTheme);
