@@ -31,7 +31,7 @@ public class Location(string name)
 
     internal TimeOnly GetNextScheduledTime(TimeOnly time, DayOfWeek day, int teachingWeek)
     {
-        //If the location isn't currently free, then the next scheduled time the time we're checking.
+        //If the location isn't currently free, then the next scheduled time is the time we're checking.
         if (!IsFreeAt(time, day, teachingWeek)) return time;
 
         //Create a list of all this location's entries for the day of the search.
