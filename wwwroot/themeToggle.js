@@ -1,5 +1,10 @@
 const htmlElement = document.documentElement;
 
+// Get the button image path for a given theme
+function getThemeButtonImagePath(theme) {
+    return theme === 'light' ? 'images/LightThemeButton.png' : 'images/DarkThemeButton.png';
+}
+
 // Apply theme to HTML element (can be called before body loads)
 function applyTheme(theme) {
     htmlElement.setAttribute('data-theme', theme);
@@ -10,7 +15,7 @@ function applyTheme(theme) {
 function updateButtonImage(theme) {
     const toggleButton = document.getElementById('themeToggle');
     if (toggleButton) {
-        toggleButton.setAttribute('src', theme === 'light' ? 'images/LightThemeButton.png' : 'images/DarkThemeButton.png');
+        toggleButton.setAttribute('src', getThemeButtonImagePath(theme));
     }
 }
 

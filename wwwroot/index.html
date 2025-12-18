@@ -12,14 +12,18 @@
         // Apply theme and store button image path to prevent FOUC
         const savedTheme = getSavedTheme();
         applyTheme(savedTheme);
-        window.themeButtonSrc = savedTheme === 'light' ? 'images/LightThemeButton.png' : 'images/DarkThemeButton.png';
+        window.themeButtonSrc = getThemeButtonImagePath(savedTheme);
     </script>
 </head>
 
 <body>
     <div id="title-bar">
         <!-- Theme toggle button with correct initial image -->
-        <script>document.write('<input height="20" id="themeToggle" onclick="toggleTheme()" src="' + window.themeButtonSrc + '" type="image" width="20" alt="Toggle Theme">');</script>
+        <input height="20" id="themeToggle" onclick="toggleTheme()" type="image" width="20" alt="Toggle Theme">
+        <script>
+            // Set button src immediately to prevent FOUC
+            document.getElementById('themeToggle').src = window.themeButtonSrc;
+        </script>
 
         <h1>StudySpot</h1>
         <p>Search for rooms with no classes scheduled</p>
