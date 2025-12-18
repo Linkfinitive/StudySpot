@@ -29,6 +29,25 @@ public class Location(string name)
         return true;
     }
 
+    internal TimeOnly GetNextScheduledTime(TimeOnly time, DayOfWeek day, int teachingWeek)
+    {
+        //If the location isn't currently free, then the next scheduled time the time we're checking.
+        if (!IsFreeAt(time, day, teachingWeek)) return time;
+
+        //Create a list of all this location's entries for the day of the search.
+        List<Entry> entriesToday = entries.FindAll(entry =>
+            entry.Day == day &&
+            entry.TeachingWeeks.Contains(teachingWeek)
+        );
+
+        //Sort the entries for today by start time, then return the first one that's after the time of the search.
+        entriesToday.Sort((a, b) => a.StartTime.CompareTo(b.StartTime));
+        foreach (Entry entry in entriesToday.Where(entry => entry.StartTime > time)) return entry.StartTime;
+
+        //If there are no entries for the day, or all have already passed, then return the last point in the day.
+        return TimeOnly.MaxValue;
+    }
+
     internal static Location[] SortEntriesByLocation(Entry[] entries)
     {
         List<Location> locations = new();
