@@ -34,19 +34,66 @@ function getFreeLocations(dateTime) {
 }
 
 function displayLocations(locations) {
-    const locationsContainer = document.getElementById("locationsContainer");
+    //Extract the locations object from the string. The type of parsedLocations is a list of objects containing
+    //a Name field and a NextScheduledTimeString field (which are both strings).
+    const parsedLocations = JSON.parse(locations);
 
-    //Clear any existing content
-    locationsContainer.innerHTML = "";
+    //Sort the locations in order of time so they can appear correctly in a list (latest time first).
+    parsedLocations.sort((a, b) => {
+        return b.NextScheduledTimeString.localeCompare(a.NextScheduledTimeString);
+    });
 
-    //Display the locations in the array
-    for (const location of locations) {
+    //Clear any existing content from the locations container already on screen.
+    const content = document.getElementById("content");
+    content.innerHTML = "";
+
+    //We need to keep track of what time we are up to so that the screen can be sectioned accordingly.
+    let earliestTime;
+
+    //Display the locations
+    for (const location of parsedLocations) {
+
+        //These variables need to be scoped to this for loop, not the if statement.
+        let locationSection;
+        let locationContainer;
+
+        if (location.NextScheduledTimeString == earliestTime) {
+            //In this case there is already a section for this time, so we can find it in the html.
+            locationContainer = document.getElementById(`location-container-${location.NextScheduledTimeString}`);
+        } else {
+            //In this case we need to create the section, and give it a class name for styling.
+            locationSection = document.createElement("div");
+            locationSection.className = "location-section";
+
+            //Give the section a title for it's time to be displayed.
+            const locationSectionTitle = document.createElement("h3");
+            locationSectionTitle.textContent = `Available until ${location.NextScheduledTimeString}`;
+            if (location.NextScheduledTimeString == "23:59") {
+                locationSectionTitle.textContent = "Available for the rest of the day";
+            }
+            locationSection.appendChild(locationSectionTitle);
+            locationSection.appendChild(document.createElement("hr"));
+
+            //Set the locationContainer (this is so that the locations as a block can be styled separately from the title of the section).
+            locationContainer = document.createElement("div");
+            locationContainer.id = `location-container-${location.NextScheduledTimeString}`;
+            locationContainer.className = "location-container";
+            locationSection.appendChild(locationContainer);
+
+            //Add the section to the content.
+            content.appendChild(locationSection);
+
+            //Set the earliest time to the time we just worked on ready for the next iteration.
+            earliestTime = location.NextScheduledTimeString;
+        }
+
         const locationDiv = document.createElement("div");
         locationDiv.className = "location";
         const locationText = document.createElement("p");
-        locationText.textContent = location;
+        locationText.textContent = `${location.Name}`;
         locationDiv.appendChild(locationText);
-        locationsContainer.appendChild(locationDiv);
+        locationContainer.appendChild(locationDiv);
+
     }
 }
 

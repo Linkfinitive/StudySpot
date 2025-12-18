@@ -47,7 +47,8 @@ public static partial class DataManager
         {
             if (l.IsFreeAt(time, dayOfWeek, teachingWeek))
             {
-                string nextScheduledTimeString = l.GetNextScheduledTime(time, dayOfWeek, teachingWeek).ToString();
+                //We must use the "HH:mm" format so that Javascript can easily sort the times correctly.
+                string nextScheduledTimeString = l.GetNextScheduledTime(time, dayOfWeek, teachingWeek).ToString("HH:mm");
                 LocationDto dto = new(l.Name, nextScheduledTimeString);
                 locationsCurrentlyFree.Add(dto);
             }
