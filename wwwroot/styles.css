@@ -78,13 +78,25 @@ body {
     margin: 10px;
 }
 
-#locationsContainer {
+.location-section {
+    text-align: center;
+    color: var(--fg-primary);
+    margin-bottom: 40px;
+}
+
+.location-section hr {
+    border: solid 2px var(--border);
+    border-radius: 10px;
+}
+
+.location-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 .location {
+    color: var(--fg-secondary);
     border: solid var(--border);
     border-radius: 10px;
     padding: 0 10px 0 10px;
