@@ -25,4 +25,9 @@ function setTheme(theme) {
 }
 
 // Load saved theme when DOM is ready
-document.addEventListener('DOMContentLoaded', loadSavedTheme);
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadSavedTheme);
+} else {
+    // DOM is already loaded
+    loadSavedTheme();
+}
