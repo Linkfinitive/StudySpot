@@ -48,7 +48,7 @@ function displayLocations(locations) {
     content.innerHTML = "";
 
     //We need to keep track of what time we are up to so that the screen can be sectioned accordingly.
-    let earliestTime;
+    let earliestTimeSoFar;
 
     //Display the locations
     for (const location of parsedLocations) {
@@ -57,7 +57,7 @@ function displayLocations(locations) {
         let locationSection;
         let locationContainer;
 
-        if (location.NextScheduledTimeString == earliestTime) {
+        if (location.NextScheduledTimeString === earliestTimeSoFar) {
             //In this case there is already a section for this time, so we can find it in the html.
             locationContainer = document.getElementById(`location-container-${location.NextScheduledTimeString}`);
         } else {
@@ -65,10 +65,10 @@ function displayLocations(locations) {
             locationSection = document.createElement("div");
             locationSection.className = "location-section";
 
-            //Give the section a title for it's time to be displayed.
+            //Give the section a title for its time to be displayed.
             const locationSectionTitle = document.createElement("h3");
             locationSectionTitle.textContent = `Available until ${location.NextScheduledTimeString}`;
-            if (location.NextScheduledTimeString == "23:59") {
+            if (location.NextScheduledTimeString === "23:59") {
                 locationSectionTitle.textContent = "Available for the rest of the day";
             }
             locationSection.appendChild(locationSectionTitle);
@@ -84,7 +84,7 @@ function displayLocations(locations) {
             content.appendChild(locationSection);
 
             //Set the earliest time to the time we just worked on ready for the next iteration.
-            earliestTime = location.NextScheduledTimeString;
+            earliestTimeSoFar = location.NextScheduledTimeString;
         }
 
         const locationDiv = document.createElement("div");
