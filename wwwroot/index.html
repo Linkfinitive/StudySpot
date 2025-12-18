@@ -22,7 +22,10 @@
         <input height="20" id="themeToggle" onclick="toggleTheme()" type="image" width="20" alt="Toggle Theme">
         <script>
             // Set button src immediately to prevent FOUC
-            document.getElementById('themeToggle').src = window.themeButtonSrc;
+            const themeButton = document.getElementById('themeToggle');
+            if (themeButton && window.themeButtonSrc) {
+                themeButton.src = window.themeButtonSrc;
+            }
         </script>
 
         <h1>StudySpot</h1>
