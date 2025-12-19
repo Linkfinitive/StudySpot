@@ -63,7 +63,7 @@ function displayLocations(locations) {
             let locationSection
 
             //In this case we need to create the section, and give it a class name for styling.
-            locationSection = document.createElement("div");
+            locationSection = document.createElement("section");
             locationSection.className = "location-section";
 
             //Give the section a title for its time to be displayed.
@@ -88,12 +88,12 @@ function displayLocations(locations) {
             earliestTimeSoFar = location.NextScheduledTimeString;
         }
 
-        const locationDiv = document.createElement("div");
-        locationDiv.className = "location";
+        const locationElement = document.createElement("article");
+        locationElement.className = "location";
         const locationText = document.createElement("p");
         locationText.textContent = `${location.Name}`;
-        locationDiv.appendChild(locationText);
-        locationContainer.appendChild(locationDiv);
+        locationElement.appendChild(locationText);
+        locationContainer.appendChild(locationElement);
 
     }
 }
