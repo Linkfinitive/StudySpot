@@ -8,7 +8,7 @@ Go to [StudySpot](https://studyspot.linkfinitive.com) and enter the time that yo
 Some of the rooms in the system may not be classrooms or may not be accessible to students. If you find such a room, please email [bugs@linkfinitive.com](mailto:bugs@linkfinitive.com) and the filtering will be updated to remove it. Or you can submit a PR :)
 
 ### Improvements
-If you have an idea for an improvement, email [ideas@linkfinitive.com](mailto:ideas@linkfinitive.com) or submit a PR :) If you're looking for something to do, go to the issues tab to find some features that would be awesome.
+If you have an idea for an improvement, email [ideas@linkfinitive.com](mailto:ideas@linkfinitive.com) or submit a PR :) If you're looking for something to do, check the [issues page](/issues) for some features that would be awesome to work on.
 
 ### Updating for Future Years
 Currently, the app needs to be updated every time the timetables change as it does not fetch the data dynamically. While that's still the case, here's the steps involved in making the update:
