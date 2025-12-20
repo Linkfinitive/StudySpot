@@ -90,7 +90,7 @@ body {
 }
 
 #location-section-loading {
-    /*Because I want the loading screern to use the secondary fg colour instead of primary.
+    /*Because I want the loading screen to use the secondary fg colour instead of primary.
     This will override only the colour part of the .location-section styles above.*/
     color: var(--fg-secondary);
 }
