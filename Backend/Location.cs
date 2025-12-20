@@ -53,7 +53,7 @@ public class Location(string name)
         List<Location> locations = new();
         foreach (Entry e in entries)
         {
-            Location? locationOfEntry = locations.Find(l => l.Name == e.Location);
+            Location? locationOfEntry = locations.Find(l => e.Location.Contains(l.Name));
             if (locationOfEntry is null)
             {
                 locationOfEntry = new Location(e.Location);
