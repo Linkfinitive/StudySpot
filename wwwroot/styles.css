@@ -76,12 +76,23 @@ body {
     /*This is a container around everything except the title bar*/
     padding: 10px;
     margin: 10px;
+
+    /*This is here because otherwise the "loading" section hr didn't take up the full screen width. Setting to 100vw or 100%
+    makes the browser seemingly ignore the padding and margin, so I've settled for doing it like this. If you know a better
+    way, please let me know. There's nothing wrong with this but it does somehow feel like a hack.*/
+    width: calc(100vw - 40px);
 }
 
 .location-section {
     text-align: center;
     color: var(--fg-primary);
     margin-bottom: 40px;
+}
+
+#location-section-loading {
+    /*Because I want the loading screern to use the secondary fg colour instead of primary.
+    This will override only the colour part of the .location-section styles above.*/
+    color: var(--fg-secondary);
 }
 
 .location-section hr {
