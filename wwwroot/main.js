@@ -122,24 +122,13 @@ function setDateTimeDefaults() {
 
 //Program
 //Load in CSV files to C#.
-let startDate = new Date()
-
 await loadCSV();
-console.log(`Load CSV: ${new Date() - startDate} ms`)
-startDate = new Date();
 
 // Set the date and time picker to the current time.
 setDateTimeDefaults();
-console.log(`Set Defaults: ${new Date() - startDate} ms`)
-startDate = new Date();
-
 
 // Attach event listeners to date and time picker.
 document.getElementById("dateTimePicker").addEventListener("change", handleDateChange);
-console.log(`Attach Event Listeners: ${new Date() - startDate} ms`)
-startDate = new Date();
-
 
 //Force a calculation of the currently free rooms.
 handleDateChange();
-console.log(`Handle Date Change: ${new Date() - startDate} ms`)
