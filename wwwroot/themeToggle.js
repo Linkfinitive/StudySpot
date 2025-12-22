@@ -18,8 +18,4 @@ function toggleTheme() {
 function setTheme(theme) {
     htmlElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme); // Save preference
-    // set button image based on theme
-    toggleButton = document.getElementById('themeToggle');
-    if (!toggleButton) { throw new Error('No element with ID "themeToggle" found'); }
-    else { toggleButton.setAttribute('src', theme === 'light' ? 'images/LightThemeButton.png' : 'images/DarkThemeButton.png'); }
 }
