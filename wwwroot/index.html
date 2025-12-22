@@ -17,13 +17,19 @@
             width="20" alt="Toggle Theme">
         <script>loadSavedTheme();</script> <!-- Load saved theme on page load -->
 
-        <h1>StudySpot</h1>
-        <p>Search for rooms with no classes scheduled</p>
-        <label for="dateTimePicker"></label>
-        <input id="dateTimePicker" type="datetime-local" />
-    </div>
-    <div id="content">
-    </div>
+    <h1>StudySpot</h1>
+    <p>Search for rooms with no classes scheduled</p>
+    <label for="dateTimePicker"></label>
+    <input id="dateTimePicker" type="datetime-local"/>
+</div>
+<div id="content">
+    <!--This content is immediately loaded while the data is being processed
+        It will be deleted as soon as the data is loaded and replaced with the real data,
+        which follows a very similar format of Markup-->
+    <section class="location-section" id="location-section-loading"><h3>loading</h3>
+        <hr/>
+    </section>
+</div>
 
     <script src="main.js" type="module"></script>
 </body>
