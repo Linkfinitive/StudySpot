@@ -12,6 +12,7 @@
 </head>
 
 <body>
+
     <header id="title-bar">
         <!-- Theme toggle button -->
         <input alt="Toggle between light and dark mode" height="20" id="themeToggle" onclick="toggleTheme()" src="images/LightThemeButton.png" type="image" width="20">
@@ -22,14 +23,14 @@
         <input id="dateTimePicker" type="datetime-local" />
     </header>
 
-<main id="content">
-    <!--This content is immediately loaded while the data is being processed
-        It will be deleted as soon as the data is loaded and replaced with the real data,
-        which follows a very similar format of Markup-->
-    <section class="location-section" id="location-section-loading"><h3>loading</h3>
-        <hr/>
-    </section>
-</main>
+    <main id="content">
+        <!--This content is immediately loaded while the data is being processed
+            It will be deleted as soon as the data is loaded and replaced with the real data,
+            which follows a very similar format of Markup-->
+        <section class="location-section" id="location-section-loading"><h3>loading</h3>
+            <hr/>
+        </section>
+    </main>
 
     <script>loadSavedTheme();</script>
     <script src="main.js" type="module"></script>
