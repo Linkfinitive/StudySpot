@@ -22,8 +22,15 @@
         <label for="dateTimePicker"></label>
         <input id="dateTimePicker" type="datetime-local" />
     </header>
-    <main id="content">
-    </main>
+
+<main id="content">
+    <!--This content is immediately loaded while the data is being processed
+        It will be deleted as soon as the data is loaded and replaced with the real data,
+        which follows a very similar format of Markup-->
+    <section class="location-section" id="location-section-loading"><h3>loading</h3>
+        <hr/>
+    </section>
+</main>
 
     <script src="main.js" type="module"></script>
 </body>
