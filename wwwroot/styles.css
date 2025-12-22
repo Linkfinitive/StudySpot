@@ -18,6 +18,10 @@
     --border: #3F3F46;
 }
 
+[data-theme="dark"] #themeToggle {
+    content: url("images/DarkThemeButton.png");
+}
+
 body {
     font-family: sans-serif;
     font-size: 1rem;
