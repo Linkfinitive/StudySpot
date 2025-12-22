@@ -24,8 +24,6 @@ public static partial class DataManager
         {
             entries.Add(new Entry(line));
         }
-
-        Console.WriteLine("Read in Successfully");
     }
 
     [JSExport]
