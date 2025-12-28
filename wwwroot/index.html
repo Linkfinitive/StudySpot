@@ -3,19 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>StudySpot</title>
-    <link href="./styles.css" rel="stylesheet" />
+    <link href="./styles.css" rel="stylesheet"/>
+
     <!-- load theme toggle script here so it's available when the page loads -->
     <script src="themeToggle.js"></script>
 </head>
 
 <body>
+
     <header id="title-bar">
         <!-- Theme toggle button -->
-        <input height="20" id="themeToggle" onclick="toggleTheme()" src="images/LightThemeButton.png" type="image"
-            width="20" alt="Toggle Theme">
-        <script>loadSavedTheme();</script> <!-- Load saved theme on page load -->
+        <input alt="Toggle between light and dark mode" height="20" id="themeToggle" onclick="toggleTheme()" src="images/LightThemeButton.png" type="image" width="20">
 
         <h1>StudySpot</h1>
         <p>Search for rooms with no classes scheduled</p>
@@ -23,16 +23,17 @@
         <input id="dateTimePicker" type="datetime-local" />
     </header>
 
-<main id="content">
-    <!--This content is immediately loaded while the data is being processed
-        It will be deleted as soon as the data is loaded and replaced with the real data,
-        which follows a very similar format of Markup-->
-    <section class="location-section" id="location-section-loading"><h3>loading</h3>
-        <hr/>
-    </section>
-</main>
+    <main id="content">
+        <!--This content is immediately loaded while the data is being processed
+            It will be deleted as soon as the data is loaded and replaced with the real data,
+            which follows a very similar format of Markup-->
+        <section class="location-section" id="location-section-loading"><h3>loading</h3>
+            <hr/>
+        </section>
+    </main>
 
+    <script>loadSavedTheme();</script>
     <script src="main.js" type="module"></script>
-</body>
 
+</body>
 </html>
