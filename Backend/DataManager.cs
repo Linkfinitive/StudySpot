@@ -52,6 +52,10 @@ public static partial class DataManager
             }
         }
 
+        //Reorder the locations alphabetically so that they are grouped by building.
+        locationsCurrentlyFree.Sort((a, b) =>
+            string.Compare(a.Name, b.Name, StringComparison.OrdinalIgnoreCase));
+
         return JsonSerializer.Serialize(locationsCurrentlyFree, AppJsonContext.Default.ListLocationDto);
     }
 }
