@@ -1,0 +1,15 @@
+# Cloudflare Pages configuration for StudySpot
+# See: https://developers.cloudflare.com/workers/wrangler/configuration/
+
+name = "studyspot"
+compatibility_date = "2025-12-15"
+
+# Pages configuration for static assets
+pages_build_output_dir = "./output/wwwroot"
+
+# Build configuration
+[build]
+command = "./build.sh"
+
+# Environment variables can be configured in the Cloudflare dashboard
+# or using wrangler secrets for sensitive values
