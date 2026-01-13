@@ -1,18 +1,14 @@
-# Cloudflare configuration for StudySpot
-# This file defines the build and deployment configuration for Cloudflare Pages
-# See: https://developers.cloudflare.com/pages/configuration/build-configuration/
+# Cloudflare Workers with Assets configuration for StudySpot
+# This file defines the deployment configuration for Cloudflare Workers with static assets
+# See: https://developers.cloudflare.com/workers/configuration/
 
 name = "studyspot"
 compatibility_date = "2025-12-15"
 
-# For Cloudflare Pages, this specifies where the build output is located
-# The build process will create files in ./output/wwwroot which will be deployed
-pages_build_output_dir = "./output/wwwroot"
+# Assets configuration for Workers with Assets
+# This specifies the directory containing static files to be deployed
+[assets]
+directory = "./output/wwwroot"
 
-# Build configuration
-# This command will be executed during the Cloudflare Pages build process
-[build]
-command = "./build.sh"
-
-# Note: Environment variables should be configured in the Cloudflare Pages dashboard
-# under Settings > Environment variables
+# Note: The build command (./build.sh) should be configured in the Cloudflare dashboard
+# under Settings > Builds & deployments > Build configuration

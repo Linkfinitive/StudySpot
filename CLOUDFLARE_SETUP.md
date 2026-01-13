@@ -1,29 +1,21 @@
-# Cloudflare Pages Setup
+# Cloudflare Workers with Assets Setup
 
-This document explains how to configure Cloudflare Pages for StudySpot after the wrangler.toml has been added to the repository.
+This document explains how to configure Cloudflare Workers with Assets for StudySpot after the wrangler.toml has been added to the repository.
 
 ## Dashboard Configuration
 
-With the `wrangler.toml` file now in the repository, the Cloudflare Pages dashboard configuration should be simplified:
+With the `wrangler.toml` file now in the repository, the Cloudflare dashboard configuration should be simplified:
 
 ### Build Configuration
 
-In the Cloudflare Pages dashboard (Settings > Builds & deployments > Build configuration), update the following settings:
+In the Cloudflare dashboard (Settings > Builds & deployments > Build configuration), update the following settings:
 
-1. **Framework preset**: None (Custom)
-2. **Build command**: `./build.sh` (or leave empty if wrangler.toml is being used)
-3. **Build output directory**: `output/wwwroot`
+1. **Build command**: `./build.sh`
+2. **Deploy command**: `npx wrangler deploy` (remove the `--assets` and `--compatibility-date` flags)
+3. **Version command**: `npx wrangler versions upload` (remove the `--assets` and `--compatibility-date` flags)
 4. **Root directory**: `/` (default)
-5. **Remove** any custom deploy/version commands - these should not be needed for Cloudflare Pages
 
-### Important: Switching from Workers to Pages
-
-If you're currently using Cloudflare Workers with Assets (using `wrangler deploy --assets` and `wrangler versions upload --assets`), you should migrate to Cloudflare Pages instead, which is the recommended approach for static sites:
-
-1. Create a new Cloudflare Pages project
-2. Connect it to your GitHub repository
-3. Configure the build settings as described above
-4. Remove the old Workers deployment
+The `wrangler.toml` file now contains the assets directory and compatibility date configuration, so these no longer need to be specified in the dashboard commands.
 
 ### What Changed
 
@@ -33,45 +25,50 @@ If you're currently using Cloudflare Workers with Assets (using `wrangler deploy
 - Version command: `npx wrangler versions upload --assets=./output/wwwroot --compatibility-date 2025-12-15`
 
 **After:**
-- All configuration is now in `wrangler.toml`
-- Cloudflare Pages will automatically read the configuration from the file
-- Commands and compatibility dates are version-controlled in the repository
+- Build command: `./build.sh` (unchanged)
+- Deploy command: `npx wrangler deploy` (simplified - reads from wrangler.toml)
+- Version command: `npx wrangler versions upload` (simplified - reads from wrangler.toml)
+
+All configuration (assets directory, compatibility date) is now in `wrangler.toml` and version-controlled in the repository.
 
 ### Benefits
 
 1. **Version Control**: Configuration is now tracked in Git
 2. **Consistency**: All deployments use the same configuration
-3. **Maintainability**: No need to manually update dashboard settings
-4. **Best Practice**: Follows Cloudflare's recommended approach
+3. **Maintainability**: No need to manually update dashboard settings when changing compatibility dates or asset directories
+4. **Best Practice**: Follows Cloudflare's recommended approach for Workers with Assets
 
 ### Deployment
 
-Cloudflare Pages will automatically:
+Cloudflare will automatically:
 1. Clone the repository
-2. Read `wrangler.toml` for configuration (optional but recommended)
+2. Read `wrangler.toml` for assets and compatibility configuration
 3. Run the build command (`./build.sh`)
-4. Deploy from the specified output directory (`./output/wwwroot`)
+4. Deploy using the simplified commands that reference the wrangler.toml configuration
 
 ### Using Wrangler CLI (Optional)
 
 With the `wrangler.toml` in place, you can also deploy manually using:
 
 ```bash
-# Deploy to Cloudflare Pages
-npx wrangler pages deploy ./output/wwwroot --project-name=studyspot
+# Build first
+./build.sh
 
-# Or if you build first:
-./build.sh && npx wrangler pages deploy ./output/wwwroot --project-name=studyspot
+# Deploy using wrangler (it will read wrangler.toml automatically)
+npx wrangler deploy
+
+# Or create a version
+npx wrangler versions upload
 ```
 
-This is much cleaner than the previous approach with `--assets` and `--compatibility-date` flags.
+This is much cleaner than the previous approach with repeated `--assets` and `--compatibility-date` flags.
 
-### Updating Compatibility Date
+### Updating Configuration
 
-To update the compatibility date in the future:
+To update the compatibility date or assets directory in the future:
 1. Edit `wrangler.toml` in the repository
-2. Update the `compatibility_date` field
+2. Update the relevant field (`compatibility_date` or `assets.directory`)
 3. Commit and push the change
-4. Cloudflare will use the new date on the next deployment
+4. Cloudflare will use the new configuration on the next deployment
 
-No dashboard changes required!
+No dashboard command changes required!
