@@ -8,12 +8,22 @@ With the `wrangler.toml` file now in the repository, the Cloudflare Pages dashbo
 
 ### Build Configuration
 
-In the Cloudflare Pages dashboard, update the following settings:
+In the Cloudflare Pages dashboard (Settings > Builds & deployments > Build configuration), update the following settings:
 
 1. **Framework preset**: None (Custom)
-2. **Build command**: Leave empty (will use wrangler.toml)
-3. **Build output directory**: Leave empty (will use wrangler.toml)
+2. **Build command**: `./build.sh` (or leave empty if wrangler.toml is being used)
+3. **Build output directory**: `output/wwwroot`
 4. **Root directory**: `/` (default)
+5. **Remove** any custom deploy/version commands - these should not be needed for Cloudflare Pages
+
+### Important: Switching from Workers to Pages
+
+If you're currently using Cloudflare Workers with Assets (using `wrangler deploy --assets` and `wrangler versions upload --assets`), you should migrate to Cloudflare Pages instead, which is the recommended approach for static sites:
+
+1. Create a new Cloudflare Pages project
+2. Connect it to your GitHub repository
+3. Configure the build settings as described above
+4. Remove the old Workers deployment
 
 ### What Changed
 
@@ -38,9 +48,23 @@ In the Cloudflare Pages dashboard, update the following settings:
 
 Cloudflare Pages will automatically:
 1. Clone the repository
-2. Read `wrangler.toml`
+2. Read `wrangler.toml` for configuration (optional but recommended)
 3. Run the build command (`./build.sh`)
 4. Deploy from the specified output directory (`./output/wwwroot`)
+
+### Using Wrangler CLI (Optional)
+
+With the `wrangler.toml` in place, you can also deploy manually using:
+
+```bash
+# Deploy to Cloudflare Pages
+npx wrangler pages deploy ./output/wwwroot --project-name=studyspot
+
+# Or if you build first:
+./build.sh && npx wrangler pages deploy ./output/wwwroot --project-name=studyspot
+```
+
+This is much cleaner than the previous approach with `--assets` and `--compatibility-date` flags.
 
 ### Updating Compatibility Date
 

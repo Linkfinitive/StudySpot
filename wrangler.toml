@@ -1,15 +1,18 @@
-# Cloudflare Pages configuration for StudySpot
-# See: https://developers.cloudflare.com/workers/wrangler/configuration/
+# Cloudflare configuration for StudySpot
+# This file defines the build and deployment configuration for Cloudflare Pages
+# See: https://developers.cloudflare.com/pages/configuration/build-configuration/
 
 name = "studyspot"
 compatibility_date = "2025-12-15"
 
-# Pages configuration for static assets
+# For Cloudflare Pages, this specifies where the build output is located
+# The build process will create files in ./output/wwwroot which will be deployed
 pages_build_output_dir = "./output/wwwroot"
 
 # Build configuration
+# This command will be executed during the Cloudflare Pages build process
 [build]
 command = "./build.sh"
 
-# Environment variables can be configured in the Cloudflare dashboard
-# or using wrangler secrets for sensitive values
+# Note: Environment variables should be configured in the Cloudflare Pages dashboard
+# under Settings > Environment variables
